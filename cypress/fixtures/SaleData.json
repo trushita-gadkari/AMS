@@ -1,0 +1,11 @@
+{
+    "description": "testSale_dockerHub",
+    "hall": "Main Hall",
+    "saleMonth": "Feb",
+    "saleYear": "2023",
+    "saleDate": "6",
+    "saleStartHour": "17",
+    "saleStartMinutes" : "30"
+  
+  }
+  

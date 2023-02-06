@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-02-06T10:08:10.847Z",
+    "end": "2023-02-06T10:09:24.484Z",
+    "duration": 73637,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "28fab95c-8100-4757-a2e6-ac40ebb9a54d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\test-suite\\launchAMS.cy.js",
+      "file": "cypress\\e2e\\test-suite\\launchAMS.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4ad6d19a-1a8d-4117-896a-70efd2e3a37c",
+          "title": "Add vehicle to sale",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "check vehicles are getting added in created sale",
+              "fullTitle": "Add vehicle to sale check vehicles are getting added in created sale",
+              "timedOut": null,
+              "duration": 69549,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(Cypress.env('url'));\nAddVehicleToSaleObj.getAddSaleBtn().click();\n//cy.pause()\nAddVehicleToSaleObj.getSaleDescription().type(this.saleDetails.description);\n//cy.pause()\nAddVehicleToSaleObj.getDatepicker().click();\n// cy.pause()\nAddVehicleToSaleObj.getCalendar().should('be.visible');\nAddVehicleToSaleObj.getMonth().select(this.saleDetails.saleMonth);\nAddVehicleToSaleObj.getYear().select(this.saleDetails.saleYear);\n// cy.pause()\nAddVehicleToSaleObj.getAllDates().each(($el, index, $list) => {\n  if ($el.text() == this.saleDetails.saleDate) {\n    AddVehicleToSaleObj.selectDate().eq(index).click({\n      force: true\n    });\n  }\n});\nAddVehicleToSaleObj.getStartHour().type(this.saleDetails.saleStartHour);\nAddVehicleToSaleObj.getStartMinutes().type(this.saleDetails.saleStartMinutes);\n//cy.pause()\nAddVehicleToSaleObj.getSaveCTA().click();\n//cy.visit(Cypress.env('url'))\ncy.fixture(\"Multiple_vehicle\").then(data => {\n  data.forEach(vehiclesData => {\n    AddVehicleToSaleObj.getVehicleEntryViaBarcode().click({\n      force: true\n    });\n    cy.url().should('include', 'begin-vehicle-entry');\n    cy.wait(2000);\n    AddVehicleToSaleObj.getVrm().type(vehiclesData.vehicle_vrm);\n    AddVehicleToSaleObj.getBarcode().type(vehiclesData.vehicle_barcode);\n    AddVehicleToSaleObj.getSubmitBtn().click();\n    AddVehicleToSaleObj.getSubmitBtn().click();\n    AddVehicleToSaleObj.getmileage().type(vehiclesData.vehicle_mileage);\n    AddVehicleToSaleObj.getSubmitBtn().click();\n    // cy.pause()\n    AddVehicleToSaleObj.sellerUnknownCTA().click();\n    AddVehicleToSaleObj.confirmDetailsCTA().click({\n      force: true\n    });\n    //cy.pause()\n    AddVehicleToSaleObj.vehicleEditTab().click();\n    AddVehicleToSaleObj.vehicleV5HeldState().select(vehiclesData.vehicle_V5HeldState);\n    AddVehicleToSaleObj.vehicleServiceHistory().select(vehiclesData.vehicle_serviceHistory);\n    AddVehicleToSaleObj.vehicleVatStatus().select(vehiclesData.vehicle_vatStatus);\n    AddVehicleToSaleObj.editTabSaveCTA().click();\n    AddVehicleToSaleObj.globalMessage().should('have.text', 'Vehicle saved');\n    AddVehicleToSaleObj.getVehicleHistory().click({\n      force: true\n    });\n    AddVehicleToSaleObj.filterVehicle().type(vehiclesData.searchVehicle);\n    AddVehicleToSaleObj.searchCTA().click({\n      force: true\n    });\n    AddVehicleToSaleObj.selectSearchedVehicle().contains('div', vehiclesData.searchVehicle).click();\n    AddVehicleToSaleObj.vehicleEditTab().click();\n    // below code is to add new seller for vehicles\n    AddVehicleToSaleObj.addNewSellerCTA().click();\n    AddVehicleToSaleObj.sellerName().type(vehiclesData.sellerName);\n    AddVehicleToSaleObj.seller_pricing().select(vehiclesData.sellerPricing);\n    AddVehicleToSaleObj.sellerAddress().type(vehiclesData.sellerAddress);\n    AddVehicleToSaleObj.sellerTown().type(vehiclesData.sellerTown);\n    AddVehicleToSaleObj.sellerSaveCTA().then($button => {\n      if ($button.is(':visible')) {\n        //you get here only if button is visible\n        AddVehicleToSaleObj.sellerSaveCTA().click({\n          force: true\n        });\n      }\n    });\n    Cypress.config('defaultCommandTimeout', 15000);\n    Cypress.config('defaultCommandTimeout', 10000);\n    cy.wait(8000);\n    AddVehicleToSaleObj.vehicleSummaryTab().click({\n      force: true\n    });\n    AddVehicleToSaleObj.addVehicleToCurrentSaleCTA().click();\n    AddVehicleToSaleObj.globalMessage().should('have.text', 'Placed vehicle in sale');\n  });\n});",
+              "err": {},
+              "uuid": "c1fb0dc8-9fea-4e00-95d7-fb188db7fe8e",
+              "parentUUID": "4ad6d19a-1a8d-4117-896a-70efd2e3a37c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c1fb0dc8-9fea-4e00-95d7-fb188db7fe8e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 69549,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

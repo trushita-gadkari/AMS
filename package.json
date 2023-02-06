@@ -1,0 +1,28 @@
+{
+  "name": "ams",
+  "version": "1.0.0",
+  "description": "this project is for automating ams site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+    "cypress:open": "cypress open",
+    "merge": "mochawesome-merge cypress/reports/*.json > output.json",
+    "generate_mochawesome_report": "marge output.json --reportDir ./ --inline",
+    "final_report": "npm run merge && npm run generate_mochawesome_report",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports",
+    "pretest": "npm run clean:reports",
+    "edgeExecution": "npx cypress run --browser edge",
+    "executionWithReport": "npm run cy:run && npm run final_report",
+    "dashboardElectron":"npx cypress run --record --key c6b274c5-b99d-4f38-8075-a321d554e308",
+    "dashboardEdge":"npx cypress run --browser edge --record --key c6b274c5-b99d-4f38-8075-a321d554e308",
+    "dashboardChrome":"npx cypress run --headed --browser chrome --record --key c6b274c5-b99d-4f38-8075-a321d554e308"
+  },
+  "author": "trushita gadkari",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.5.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.2"
+  }
+}
